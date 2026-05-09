@@ -1,0 +1,6 @@
+#preload = Images/wallpapers/117497448_p0.jpg
+preload = Images/wallpapers/my-neighbor-totoro-sunflowers.png
+
+#la coma vacia antes, significa para todos los monitores
+#wallpaper = ,Images/wallpapers/117497448_p0.jpg
+wallpaper = Images/wallpapers/my-neighbor-totoro-sunflowers.png

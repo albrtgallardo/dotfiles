@@ -1,0 +1,242 @@
+{
+  "layer": "top",
+  "position": "top",
+  "autohide-in-fullscreen": true,
+  
+  "modules-left": [
+    "custom/logo",
+    "group/system",
+    "hyprland/workspaces"
+  ],
+
+  "modules-center": [
+    "hyprland/window"
+  ],
+
+  "modules-right": [
+    "privacy",
+    "group/tools",
+    "group/ajustes",
+    "custom/powermenu"
+  ],  
+
+
+
+
+  "custom/logo": {
+    "exec": "echo ' '",
+    "interval": 0,
+    "tooltip": false,
+    "on-click": "hyprlock && pkill wlogout"
+  },
+
+
+
+ "group/system": {
+    "type": "group",
+    "orientation": "horizontal",
+    "modules": [
+      "cpu",
+      "memory",
+      "temperature"
+    ]
+  },
+
+
+  "cpu": {
+    "states": {
+      "warning": 70,
+      "critical": 90
+    },
+    "format": "  {usage}%",
+    "tooltip": true
+  },
+
+  "memory": {
+    "states": {
+      "warning": 8000000000,
+      "critical": 10000000000
+    },
+    "format": "  {used:0.1f}G",
+    "tooltip": false
+  },
+
+  "temperature": {
+    "critical-threshold": 80,
+    "format": " {temperatureC}°C",
+    "tooltip": false
+  },
+
+
+  "hyprland/workspaces": {
+    "format": "{name}",
+    "persistent-workspaces":{
+      "HDMI-1": [10]
+    }
+  },
+
+
+
+  "hyprland/window": {
+    "format": "{class}",
+    "max-length": 10,
+    "tooltip": false
+  },
+
+
+  "privacy": {
+    "icon-spacing": 8,
+    "icon-size": 12,
+    "transition-duration": 250,
+    "modules": [
+      {
+        "type": "screenshare",
+	"tooltip": true,
+	"tooltip-icon-size": 16
+      },
+      {
+        "type": "audio-out",
+	"tooltip": true,
+	"tooltip-icon-size": 16
+      },
+      {
+        "type": "audio-in",
+        "tooltip": true,
+        "tooltip-icon-size": 16
+      }
+    ],
+  },
+
+
+  "group/tools": {
+    "type": "group",
+    "orientation": "horizontal",
+    "modules": [
+      "network",
+      "disk",
+      "hyprland/language",
+      "bluetooth"
+    ]
+  },
+
+
+  "network": {
+    "format-wifi": "   {signalStrength}%",
+    "format-ethernet": "E {ifname}",
+    "format-disconnected": " Sin conexión",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) "
+  },
+
+  "disk": {
+    "interval": 30,
+    "format": " ",
+    "unit": "GB",
+    "tooltip-format": "Used:{specific_used:0.2f} GB\nFree:{specific_free:0.2f} GB",
+    "path": "/home/alberto",
+    "on-click": "hyprctl dispatch exec [float] nemo"
+  },
+
+
+  "hyprland/language": {
+    "format": "   {}",
+    "format-en": "EN",
+    "format-es": "ES"
+  },
+
+
+  "bluetooth": {
+    "format": " ",
+    "format-off": "off",
+    "format-disable": "disable",
+    "format-connected": "connected",
+    "format-connected-battery": "󰂯",
+    "tooltip-format": "format default",
+    "tooltip-format-on": "{status}",
+    "tooltip-format-connected": "{status}\n{device_alias} {device_battery_percentage}",
+    "on-click": "hyprctl dispatch exec [float] blueman-manager"  
+  },
+
+
+  "group/ajustes": {
+    "type": "group",
+    "orientation": "horizontal",
+    "modules": [
+      "battery",
+      "backlight",
+      "pulseaudio",
+      "clock"
+    ]
+  },
+
+
+  "battery": {
+    "interval": 30,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-full": "  {capacity}",
+    "format-plugged": " {capacity}",
+    "tooltip": true,
+    "tooltip-format": "{time}",
+    "tooltip-format-full": "{timeTo} timeTo \n {time} time",
+    "tooltip-format-plugged": "{timeTo} timeTo \n {time} time",
+    "format-icons": [" ", " ", " ", " ", " "],
+    "on-click": "killall waybar && waybar & disown"
+  },
+
+
+  "backlight": {
+    "format": "󰃠 {percent}%",
+    "scroll-step": 5,
+    "min-brightness": 5,
+    "tooltip": false
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-bluetooth": " {volume}%",
+    "format-muted": "󰝟 ",
+    "tooltip": false,
+    "scroll-step": 5,
+    "format-icons": {
+      "default": ["", "", ""]
+    }
+  },
+
+  "clock": {
+    "format": "{:%H:%M}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+          "mode"          : "year",
+          "mode-mon-col"  : 3,
+          "weeks-pos"     : "right",
+          "on-scroll"     : 1,
+	  "tooltip-format": "<span font='Ubuntu Nerd Font 12' size='12000'>{calendar}</span>",
+          "format": {
+            "months":     "<span color='#EAD6A3'><b>{}</b></span>",
+            "days":       "<span color='#7B998A'><b>{}</b></span>",
+            "weeks":      "<span color='#8CC47C'><b>W{}</b></span>",
+            "weekdays":   "<span color='#B57213'><b>{}</b></span>",
+            "today":      "<span color='#0E6879'><b><u>{}</u></b></span>"
+          }
+	},
+    "actions": {
+	       "on-click-right": "mode",
+               "on-scroll-up": "tz_up",
+               "on-scroll-down": "tz_down",
+               "on-scroll-up": "shift_up",
+               "on-scroll-down": "shift_down"
+	       }
+  },
+
+
+  "custom/powermenu": {
+    "format": " ",
+    "interval": 0,
+    "tooltip": false,
+    "on-click": "~/.config/waybar/scripts/powermenu.sh"
+  }
+}

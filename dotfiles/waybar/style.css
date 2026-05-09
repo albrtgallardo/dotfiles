@@ -1,0 +1,178 @@
+/* el asterisco se pone para que aplique a toda la barra */
+@import "colors-waybar.css";
+
+/* General waybar */
+*{
+  font-family: "Ubuntu Nerd Font", monospace;
+  font-size: 10px;
+  font-weight: bold;
+  min-height: 16px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+
+window#waybar {
+  background-color: @background;
+  transition-property: background-color;
+  transition-duration: .5s;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+
+tooltip{
+  background-color: @background
+}
+
+/*--------------------Modules--------------------*/
+
+#custom-logo{
+  margin-left: 12px;
+  font-size: 12px;
+  color: #1793d1
+}
+
+
+/*system*/
+
+#system {
+  margin-left: 10px;
+  padding-right: 10px;
+  color: @texto
+}
+
+
+#cpu {
+  margin-left: 10px; 
+  padding: 0 7px
+}
+
+#memory, 
+#temperature {
+  padding: 0 7px
+}
+
+#cpu.warning,
+#memory.warning{
+  color: @warning
+}
+
+#cpu.critical,
+#memory.critical,
+#temperature.critical{
+  color: @critical
+}
+
+
+/*workspaces*/
+
+#workspaces {
+  margin-left: 60px;
+  padding: 0px 2px;
+  /*border: 2px solid @layout*/
+}
+
+#workspaces button {
+  background-color: transparent;
+  padding: 0px 4px;
+  color: @texto; 
+  font-weight: 100;
+}
+
+#workspaces button.active {
+  color: @highlight;
+}
+
+#workspaces button.urgent {
+  color: @highlight;
+}
+
+#workspaces button:hover {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+
+/*window*/
+
+#window{	
+  font-size: 9px;
+  background-color: @background;
+  border-radius: 20px;
+  padding-left: 8px;
+  padding-right: 8px;
+  /*border: 2px solid @layout;*/
+  color: @texto
+} 
+
+
+/*privacy*/
+
+#privacy {
+  margin-right: 30px;
+  color: @texto
+}
+
+/*tools*/
+
+#tools {
+  margin-right: 30px;
+  padding: 0 7px;
+  color: @texto
+}
+
+
+#network,
+#disk,
+#language,
+#bluetooth
+{
+  padding: 0 4px
+}
+
+#bluetooth {
+  font-size: 11px
+}
+
+/*ajustes*/
+
+#ajustes {
+  margin-right: 10px;
+  /*border: 2px solid @layout;*/
+  color: @texto
+}
+
+
+#battery.charging, #battery.plugged {
+  color: #26A65B;
+}
+
+#battery,
+#backlight{
+  padding: 0 4px
+}
+
+#pulseaudio{
+  padding-right: 20px;
+  padding-left: 4px
+}
+
+#clock{
+  padding-right: 5px
+}
+
+/*power*/
+
+#custom-powermenu {
+  margin-right: 8px;
+  padding: 0 4px;
+  font-size: 11px; 
+  color: @texto
+}
+
+

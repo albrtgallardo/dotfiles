@@ -1,0 +1,33 @@
+#https://wiki.hypr.land/Hypr-Ecosystem/hyprlock/
+
+general{
+  hide_cursor = true
+  ignore_empty_input = true
+}
+
+
+
+# Timeout antes de bloquear (en segundos)
+timeout=300
+
+# Color de fondo (RGBA hexadecimal)
+background=000000CC
+
+# Comando para mostrar la imagen de fondo (opcional)
+# Por ejemplo, si quieres un wallpaper personalizado:
+# background_command=grim -g "$(hyprctl activewindow | jq -r '.geometry')" /tmp/screenshot.png
+
+# Color del cursor (opcional)
+cursor_color=FFFFFFFF
+
+# Comando que se ejecuta al desbloquear
+unlock_command=echo "Desbloqueado"
+
+# Mostrar o no la animación del cursor
+cursor_animation=true
+
+# Texto que aparece en la pantalla de bloqueo
+lock_text="Bloqueado"
+
+# Fuente para el texto (puedes poner cualquier fuente disponible)
+font=Monospace 20
